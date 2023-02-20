@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -21,14 +22,23 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function SignIn({ setName }) {
+	const [disabled, setDisabled] = useState(true);
+	const [string, setString] = useState('');
+
+	useEffect(() => {
+		const disabled = string === '';
+		setDisabled(disabled);
+	}, [string])
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      name: data.get('name'),
     });
+		setName(data.get('name'));
   };
 
   return (
@@ -55,12 +65,23 @@ export default function SignIn() {
               label="ニックネーム"
               name="name"
               autoFocus
+							onChange={(e) => setString(e.target.value)}
+							onKeyDown={(e) => {
+								console.log({key: e.key})
+								// if (e.key === 'Enter') {
+								// 	e.preventDefault();
+								// }
+							}}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+							disabled={disabled}
+							onClick={() => {
+								setName(string);
+							}}
             >
 							はじめる
             </Button>
