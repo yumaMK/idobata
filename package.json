@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "crypto-js": "^4.1.1",
+    "firebase": "7.23.0",
     "md5": "^2.3.0",
     "react": "^18.3.0-next-fecc288b7-20221025",
     "react-dom": "^18.2.0",
