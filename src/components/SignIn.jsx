@@ -35,9 +35,6 @@ export default function SignIn({ setName }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('name'),
-    });
 		setName(data.get('name'));
   };
 
@@ -66,12 +63,12 @@ export default function SignIn({ setName }) {
               name="name"
               autoFocus
 							onChange={(e) => setString(e.target.value)}
-							onKeyDown={(e) => {
-								console.log({key: e.key})
+							// onKeyDown={(e) => {
+								// console.log({key: e.key})
 								// if (e.key === 'Enter') {
 								// 	e.preventDefault();
 								// }
-							}}
+							// }}
             />
             <Button
               type="submit"
