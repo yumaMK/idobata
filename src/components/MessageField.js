@@ -17,7 +17,7 @@ function MessageField({ inputEl, name, setText, text }) {
 				if (text === '') return;
 
 				if (e.key === 'Enter') {
-					pushMessage({ name: 'testname', text: text });
+					pushMessage({ name: name, text: text });
 					setText('');
 					e.preventDefault();
 				}
